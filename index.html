@@ -1,274 +1,48 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel — Эксклюзивный отдых в горах</title>
-    <style>
-        /* Сброс стилей и общие настройки */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-        }
-
-        body, html {
-            height: 100%;
-            background-color: #0b0e14;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* Главный экран-контейнер */
-        .hero-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 6%;
-            /* Качественный атмосферный фон зимнего шале в горах ночью */
-            background: linear-gradient(to bottom, rgba(11, 14, 20, 0.4) 0%, rgba(11, 14, 20, 0.6) 100%),
-                        url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=1920') no-repeat center center;
-            background-size: cover;
-        }
-
-        /* Верхняя навигация (Header) */
-        header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: fadeInElement 1s ease 0.2s forwards;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .logo span {
-            color: #ffffff;
-        }
-
-        nav {
-            display: flex;
-            gap: 35px;
-        }
-
-        nav a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover, nav a.active {
-            color: #ffffff;
-        }
-
-        .lang-select {
-            cursor: pointer;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        .lang-select:hover { opacity: 1; }
-
-        /* Центральный контент с гигантским текстом */
-        .main-content {
-            position: relative;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 1;
-            text-align: center;
-        }
-
-        /* Огромный заголовок на заднем плане */
-        .huge-title {
-            font-size: 16vw; /* Масштабируется от ширины экрана */
-            font-weight: 900;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            line-height: 1;
-            color: #ffffff;
-            user-select: none;
-            opacity: 0;
-            transform: scale(0.95);
-            animation: fadeInTitle 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        /* Кнопка "Смотреть тур" поверх текста */
-        .watch-btn {
-            position: absolute;
-            bottom: 25%;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: #ffffff;
-            padding: 14px 45px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInElement 1s ease 0.8s forwards;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .watch-btn:hover {
-            background: #ffffff;
-            color: #0b0e14;
-            border-color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
-        }
-
-        /* Нижняя панель (Footer) */
-        footer {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInElement 1s ease 0.5s forwards;
-        }
-
-        .scroll-more {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transform: rotate(-90px);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .social-icons a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: #ffffff;
-            transform: scale(1.1);
-        }
-
-        /* Стили для иконок соцсетей (SVG) */
-        .icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        /* Анимации */
-        @keyframes fadeInTitle {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes fadeInElement {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Адаптивность под мобилки */
-        @media (max-width: 768px) {
-            nav { display: none; } /* Скрываем меню на смартфонах для чистоты */
-            .huge-title { font-size: 22vw; }
-            .watch-btn { bottom: 35%; padding: 12px 35px; }
-        }
-    </style>
+    <title>Домашнее задание - Урок 2</title>
 </head>
 <body>
 
-    <div class="hero-container">
+    <h1>Домашнее задание по второму уроку</h1>
+    <p><b>Выполнил:</b> Баранов Захар, ИС 4-2</p>
 
-        <header>
-            <div class="logo">
-                <span>Travel</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            </div>
-            <nav>
-                <a href="#" class="active">Home</a>
-                <a href="#">About Us</a>
-                <a href="#">Pricing</a>
-                <a href="#">Tours</a>
-            </nav>
-            <div class="lang-select">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            </div>
-        </header>
+    <hr>
 
-        <main class="main-content">
-            <h1 class="huge-title">Alps</h1>
-            <a href="#" class="watch-btn" id="animBtn">Watch Tour</a>
-        </main>
+    <h2>Задание 1.</h2>
 
-        <footer>
-            <div class="scroll-more">
-                <span>Learn More</span>
-            </div>
-            <div class="social-icons">
-                <a href="#">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="#">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="#">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-                </a>
-            </div>
-        </footer>
+    <p>Коллекцию занимательных историй открывает следующий поучительный рассказ.</p>
 
-    </div>
+    <p>
+        — Глядите, действительно поезд! – удивился Незнайка.<br>
+        Пестренький, который и на этот раз решил не удивляться, сказал:<br>
+        — Эко диво - поезд! Поставили домики на колеса, сами залезли в них и радуются, а паровоз тащит.<br>
+        — Слушай, Кнопочка, что это такое? Опять он мне на нервы действует! – воскликнул Незнайка.<br>
+        Пестренький презрительно фыркнул:<br>
+        — Подумаешь, какой нежный: «нервы»!<br>
+        — Я вот как дам тебе! – разозлился Незнайка.<br>
+        — Тише, тише! Что это за слово «дам»? – возмутилась Кнопочка.<br>
+        — А чего он на меня говорит – нежный?<br>
+        — Ты, Пестренький, не должен называть его нежным, – сказала Кнопочка, - Это нехорошо.
+    </p>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('animBtn');
+    <p>
+        <i>«Незнайка в Солнечном городе»</i><br>
+        <b>Николай Носов</b>
+    </p>
 
-            // Микро-эффект при нажатии на кнопку
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                btn.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    btn.style.transform = 'none';
-                    alert('Запуск видео-экскурсии по заснеженному шале!');
-                }, 150);
-            });
-        });
-    </script>
+    <p>Вам понравилась эта история? Если да, то коллекция будет пополняться.</p>
+
+    <hr>
+
+    <h2>Задание 2.*</h2>
+    <h3>Моё увлечение информатикой и компьютерами</h3>
+
+    <p>Здесь должен быть текст короче но чето его нету</p>
+
+    <p>изучаем HTML.</p>
+
 </body>
 </html>
