@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашнее задание: Таблицы</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { color: #333; }
+        table { border-collapse: collapse; margin: 15px 0; }
+        td, th { border: 1px solid #000; padding: 6px 8px; text-align: center; vertical-align: middle; font-size: 13px; }
+
+        /* Расписание */
+        .schedule { width: 100%; max-width: 900px; }
+        .schedule th { background-color: #006400; color: white; font-weight: bold; }
+        .schedule thead tr:first-child th { background-color: #006400; }
+        .schedule td:first-child { background-color: #006400; color: white; font-weight: bold; width: 80px; }
+        .schedule td { background-color: #ffffff; }
+
+        /* Глаголы исключения */
+        .verbs { border: 2px solid #000; }
+        .verbs th, .verbs .header { background-color: #00BFFF; color: black; font-weight: bold; }
+        .verbs .side { background-color: #00BFFF; color: black; font-weight: bold; }
+        .verbs td { background-color: #ffffff; }
+
+        .example { width: 140px; }
+        .example td { width: 40px; height: 40px; }
+        .balloons { max-width: 700px; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+    </style>
+</head>
+<body>
+    <h1>Домашнее задание по седьмому уроку (Таблицы)</h1>
+
+    <h2>Задание 1. Сложные таблицы (Кузя Ивашкин)</h2>
+    <p>Примеры сложных таблиц с использованием rowspan и colspan:</p>
+
+    <!-- Таблица 1 -->
+    <table border="1" class="example">
+        <tr>
+            <td rowspan="2">1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+    </table>
+
+    <!-- Таблица 2 -->
+    <table border="1" class="example">
+        <tr>
+            <td>1</td>
+            <td rowspan="2">2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td colspan="2">4</td>
+        </tr>
+    </table>
+
+    <!-- Таблица 3 -->
+    <table border="1" class="example">
+        <tr>
+            <td rowspan="2">1</td>
+            <td>2</td>
+            <td rowspan="3">3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td colspan="2"> </td>
+        </tr>
+    </table>
+
+    <!-- Таблица 4 -->
+    <table border="1" class="example">
+        <tr>
+            <td>1</td>
+            <td rowspan="2">3</td>
+        </tr>
+        <tr>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td colspan="2">4</td>
+        </tr>
+    </table>
+
+    <h2>Задание 2. Расписание занятий</h2>
+    <table class="schedule" border="1">
+        <thead>
+            <tr>
+                <th colspan="6" style="background-color:#006400; color:white;">22.09.2025 - 28.09.2025</th>
+            </tr>
+            <tr>
+                <th style="background-color:#006400; color:white;"></th>
+                <th>22.09.2025<br>Понедельник</th>
+                <th>23.09.2025<br>Вторник</th>
+                <th>24.09.2025<br>Среда</th>
+                <th>25.09.2025<br>Четверг</th>
+                <th>26.09.2025<br>Пятница</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1 пара</td>
+                <td></td>
+                <td>ДискрМатем<br>203 ГУК Короткова Т.В.</td>
+                <td>ОснФинГрамотности<br>312 ГУК Коржова Е.В.</td>
+                <td></td>
+                <td>ИнфЯВПрофДеят<br>206 ГУК Никонова Г.А.</td>
+            </tr>
+            <tr>
+                <td>2 пара</td>
+                <td></td>
+                <td>АрхитАппарСредств<br>203 ГУК Ходачков Д.С.</td>
+                <td>АрхитАппарСредств<br>210 ГУК Ходачков Д.С.</td>
+                <td>ИнфТехнологии<br>ДОТ Ищенко О.С.</td>
+                <td>Электротех<br>203 ГУК Плетнев В.П.</td>
+            </tr>
+            <tr>
+                <td>3 пара</td>
+                <td></td>
+                <td></td>
+                <td>ФизикПередаДанных<br>210 ГУК Сторожаков С.Ю.</td>
+                <td>ОсновПроектБазДанных<br>ДОТ Кузнецова Е.А.</td>
+                <td>АлгоритмПрограмм<br>205 ГУК Савченко Н.Н.</td>
+            </tr>
+            <tr>
+                <td>4 пара</td>
+                <td></td>
+                <td></td>
+                <td>Физ-ра<br>ДОТ Грачев С.В.</td>
+                <td>ОсновПроектБазДанных<br>206 ГУК Кузнецова Е.А.</td>
+                <td>История России<br>203 ГУК Степанова Ю.В.</td>
+            </tr>
+            <tr>
+                <td>5 пара</td>
+                <td>ОперацСистемы<br>ДОТ Бочарова О.Р.</td>
+                <td></td>
+                <td></td>
+                <td>ЭлемВысшМатемат<br>203 ГУК Короткова Т.В.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6 пара</td>
+                <td>ДискрМатем<br>ДОТ Короткова Т.В.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7 пара</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8 пара</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Задание 3. Глаголы исключения</h2>
+    <table class="verbs" border="1">
+        <thead>
+            <tr>
+                <th colspan="5" style="background-color:#00BFFF; color:black;">Глаголы исключения</th>
+            </tr>
+            <tr>
+                <th rowspan="2" class="side">Лицо</th>
+                <th colspan="2" class="header">I спряжение</th>
+                <th colspan="2" class="header">II спряжение</th>
+            </tr>
+            <tr>
+                <th class="header">ед.ч.</th>
+                <th class="header">мн.ч.</th>
+                <th class="header">ед.ч.</th>
+                <th class="header">мн.ч.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="side">I</td>
+                <td>У(Ю)</td>
+                <td>ЕМ</td>
+                <td>У(Ю)</td>
+                <td>ИМ</td>
+            </tr>
+            <tr>
+                <td class="side">II</td>
+                <td>ЕШЬ</td>
+                <td>ЕТЕ</td>
+                <td>ИШЬ</td>
+                <td>ИТЕ</td>
+            </tr>
+            <tr>
+                <td class="side">III</td>
+                <td>ЕТ</td>
+                <td>УТ(ЮТ)</td>
+                <td>ИТ</td>
+                <td>АТ(ЯТ)</td>
+            </tr>
+            <tr>
+                <td class="side">Неопр.<br>форма</td>
+                <td colspan="2">АТЬ, ЯТЬ, ЕТЬ,<br>ЫТЬ, ОТЬ, УТЬ,<br>ТЬ</td>
+                <td colspan="2">ИТЬ</td>
+            </tr>
+            <tr>
+                <td class="side">Искл.</td>
+                <td colspan="2">брить, стелить</td>
+                <td colspan="2">гнать, держать, дышать и слышать,<br>зависить, видеть, ненавидеть, а еще<br>смотреть, вертеть, и обидеть, и терпеть</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Задание 6. Полёты на воздушном шаре</h2>
+    <div class="balloons">
+        <h3 style="text-align: center;">Полёты на воздушном шаре</h3>
+        <p style="text-align: center;">
+            <!-- Здесь должно быть изображение воздушных шаров.
+                 Ссылка на оригинал: https://terabox.com/s/1tTmVLWHkYwX-fRQzKv7TsA
+                 В реальной работе вставьте <img src="balloon.jpg" alt="Воздушные шары"> -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Hot_air_balloons.jpg/640px-Hot_air_balloons.jpg"
+                 alt="Воздушные шары" style="max-width: 100%; height: auto;">
+        </p>
+        <div style="display: flex; justify-content: space-between; gap: 20px;">
+            <div class="text-left" style="flex: 1;">
+                <p>Воздушный шар, наполненный горячим воздухом, летает потому, что горячий воздух легче холодного. Первые воздушные шары построили в 1783 г. во Франции братья Монгольфье.</p>
+            </div>
+            <div class="text-right" style="flex: 1;">
+                <p>Первыми пассажирами воздушного шара стали овца, утка и петух. Их полёт продолжался всего 8 минут. Первый полёт человека на воздушном шаре длился 25 минут, а пролетел шар 8 км.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 15px;">
+            Позднее шары стали наполнять не горячим воздухом, а газами легче воздуха, например, водородом.
+        </p>
+    </div>
+
+</body>
+</html>
